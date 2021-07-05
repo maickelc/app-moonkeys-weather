@@ -7,6 +7,11 @@ export interface CityWeather {
 
 export interface WeatherClass {
   temperature: Temperature;
+  summary: WeatherSummary;
+}
+
+export interface WeatherSummary {
+  description: string;
 }
 
 export interface Temperature {

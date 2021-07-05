@@ -16,7 +16,11 @@ export const GQL_CITY_BY_ID = gql`
           max
           min
         }
+        summary {
+          description
+        }
       }
+
     }
   }
 `

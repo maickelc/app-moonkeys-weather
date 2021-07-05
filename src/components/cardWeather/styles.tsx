@@ -28,6 +28,11 @@ export const Min = styled.Text`
 export const Max = styled.Text`
 
 `
+export const Description = styled.Text`
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+`
 export const ButtonRemove = styled.TouchableOpacity`
   display: flex;
   justify-content: center;

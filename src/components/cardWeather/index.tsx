@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { Row, City, Actual, Max, Min, CardView, ButtonRemove } from './styles';
-import { CardMode, CityWeather, Temperature } from '../../interfaces/index';
+import { Row, City, Actual, Max, Min, CardView, ButtonRemove, Description } from './styles';
+import { CardMode, CityWeather, Temperature, WeatherSummary } from '../../interfaces/index';
 import { useCaseRemoveCity, useCaseAddNewCity } from '../../usecase/index';
 
 interface ICardWeatherProps {
   city: CityWeather;
   temperature: Temperature;
+  summary: WeatherSummary;
   mode: CardMode;
   onUpdate: () => void;
 }
@@ -14,6 +15,7 @@ interface ICardWeatherProps {
 const CardWeather: React.FC<ICardWeatherProps> = ({
   city,
   temperature,
+  summary,
   mode,
   onUpdate,
 }) => {
@@ -29,7 +31,7 @@ const CardWeather: React.FC<ICardWeatherProps> = ({
     'search': useCaseAddNewCity,
   }
   return (
-    <CardView testID='cardweather'>
+    <CardView key={city.id} testID='cardweather'>
       <View>
         <City>{city.name}</City>
         <Actual>{fixed(actual)}º</Actual>
@@ -38,6 +40,7 @@ const CardWeather: React.FC<ICardWeatherProps> = ({
         <Max>{fixed(max, 0)}º</Max>
         <Min>{fixed(min, 0)}º</Min>
       </Row>
+      <Description>{summary.description}</Description>
       <ButtonRemove onPress={() => {
         const promise = action[mode](city.id)
         promise.then(onUpdate);

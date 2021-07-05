@@ -69,6 +69,7 @@ const Home: React.FC = () => {
         key={item.name}
         city={item}
         temperature={temperature}
+        summary={weather.summary}
         mode={item.favorite ? 'list' : 'search'}
         onUpdate={() => {
           getCities();
